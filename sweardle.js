@@ -213,21 +213,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    try {
-      const res = await fetch(
-        `https://wordsapiv1.p.rapidapi.com/words/${guessedWord.toLowerCase()}`,
-        {
-          method: "GET",
-          headers: {
-            "x-rapidapi-host": "wordsapiv1.p.rapidapi.com",
-            "x-rapidapi-key": "<YOUR_KEY_HERE>",
-          },
-        }
-      );
-
-      if (!res.ok) {
-        throw Error();
-      }
+   
       const firstLetterId = guessedWordCount * 5 + 1;
 
       localStorage.setItem("availableSpace", availableSpace);
