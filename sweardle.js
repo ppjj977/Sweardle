@@ -282,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         showLosingResult();
                         updateWordIndex();
                         updateTotalGames();
-                        
+                        resetGameState();
                     }
                     return;
                 }, 1200);
