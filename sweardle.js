@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     createSquares();
     addKeyboardClicks();
     loadLocalStorage();
+    resetGameState();
 
     function resetGameState() {
         window.localStorage.removeItem("guessedWordCount");
