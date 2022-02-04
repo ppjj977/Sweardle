@@ -4,9 +4,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let guessedWordCount = 0;
     let availableSpace = 1;
     let guessedWords = [[]];
-
-    const words = ["sweet", "onion", "shoes", "heavy", "couch"];
-    let currentWord = words[currentWordIndex];
+    
+    const words = ["sweet", "sweet", "sweet"];
+    let currentWord = ["sweet"];
 
     initLocalStorage();
     initHelpModal();
@@ -15,6 +15,13 @@ document.addEventListener("DOMContentLoaded", () => {
     addKeyboardClicks();
     loadLocalStorage();
 
+    function resetGameState() {
+        window.localStorage.removeItem("guessedWordCount");
+        window.localStorage.removeItem("guessedWords");
+        window.localStorage.removeItem("keyboardContainer");
+        window.localStorage.removeItem("boardContainer");
+        window.localStorage.removeItem("availableSpace");
+    }
     function initLocalStorage() {
         const storedCurrentWordIndex =
             window.localStorage.getItem("currentWordIndex");
@@ -56,13 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function resetGameState() {
-        window.localStorage.removeItem("guessedWordCount");
-        window.localStorage.removeItem("guessedWords");
-        window.localStorage.removeItem("keyboardContainer");
-        window.localStorage.removeItem("boardContainer");
-        window.localStorage.removeItem("availableSpace");
-    }
+  
 
     function createSquares() {
         const gameBoard = document.getElementById("board");
@@ -202,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function updateWordIndex() {
         console.log({ currentWordIndex });
-        window.localStorage.setItem("currentWordIndex", currentWordIndex + 1);
+        window.localStorage.setItem("currentWordIndex", currentWordIndex + 0);
     }
 
     async function handleSubmitWord() {
@@ -257,13 +258,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (guessedWord === currentWord) {
                 setTimeout(() => {
-                    const okSelected = window.confirm("Well done!");
+                    const okSelected = window.confirm("Well done clever clogs!");
                     if (okSelected) {
                         clearBoard();
                         showResult();
                         updateWordIndex();
                         updateTotalGames();
                         resetGameState();
+                        
+                        
                     }
                     return;
                 }, 1200);
@@ -272,14 +275,14 @@ document.addEventListener("DOMContentLoaded", () => {
             if (guessedWords.length === 6 && guessedWord !== currentWord) {
                 setTimeout(() => {
                     const okSelected = window.confirm(
-                        `Sorry, you have no more guesses! The word is "${currentWord.toUpperCase()}".`
+                        `What a moron! The word is "${currentWord.toUpperCase()}".`
                     );
                     if (okSelected) {
                         clearBoard();
                         showLosingResult();
                         updateWordIndex();
                         updateTotalGames();
-                        resetGameState();
+                        
                     }
                     return;
                 }, 1200);
