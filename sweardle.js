@@ -5,8 +5,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let availableSpace = 1;
     let guessedWords = [[]];
     
-    const words = ["pube", "pube", "pube"];
-    let currentWord = ["pube"];
+    const words = ["knob", "knob", "knob"];
+    let currentWord = ["knob"];
 
     initLocalStorage();
     initHelpModal();
